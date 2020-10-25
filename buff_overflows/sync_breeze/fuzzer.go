@@ -1,24 +1,3 @@
-# Fuzzing
-
-Fuzzing is a reverse engineering technique used to find places in the code where unhandled input can be provided, leading to an application crash or other behavior which can be further exploited.
-
-## HTTP Fuzzing - SyncBreeze
-## Gathering Input Data for a Seed
-
-We open the Sync Breeze Enterprise server on our test machine and navigate to the Sync Breeze web portal:
-
-![sync breeze portal](img/screen1.png)
-
-We attempt to login using invalid credentials and capture the response in wireshark. We analyze the TCP stream and find our login request:
-
-![login](img/screen2.png)
-![req](img/screen3.png)
-
-## First Fuzzer POC
-
-The following Go program fuzzes the username parameter of the page by sending an increasingly large payload every iteration until it reaches 2000 bytes of lenght.
-
-```
 // SyncBreeze 'username' POST parameter fuzzer
 // By disastrpc @ github.com/disastrpc
 
@@ -73,9 +52,3 @@ func main() {
 	}
 
 }
-```
-
-Running the script crashes the application at around 800 bytes.
-
-## Finding Out Memory Offset of Registers
-
